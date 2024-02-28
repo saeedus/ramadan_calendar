@@ -4,8 +4,10 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.ramadancalendar.databinding.ActivityMainBinding
 import com.example.ramadancalendar.model.Location
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var binding: ActivityMainBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,29 +30,45 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         homeViewModel = HomeViewModel(this)
-        homeViewModel.fetchLocation()
+
+        fetchLocation()
         initObservers()
     }
 
     private fun initObservers() {
         homeViewModel.currentLocation.observe(this) { locationData ->
-            binding.txtView1.text = if (locationData != null) {
-                String.format(
-                    "Latitude: %.2f, Longitude: %.2f",
-                    locationData.latitude,
-                    locationData.longitude
-                )
-            } else {
-                "No location found!"
+
+            if (locationData != null) {
+                binding.tvLocation.text =
+                    String.format(
+                        "Lat: %.2f, Long: %.2f",
+                        locationData.latitude,
+                        locationData.longitude
+                    )
+
+                binding.clRoot.background = AppCompatResources.getDrawable(this, R.color.teal_200)
+
+                binding.progressCircular.isVisible = false
+                binding.tvLocation.isVisible = true
             }
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    private fun fetchLocation() {
+        binding.progressCircular.isVisible = true
+        binding.tvLocation.isVisible = false
+        homeViewModel.fetchLocation()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                homeViewModel.fetchLocation()
+                fetchLocation()
             }
         }
     }
