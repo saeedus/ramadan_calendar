@@ -1,6 +1,8 @@
 package com.example.ramadancalendar
 
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.ramadancalendar.databinding.ActivityMainBinding
 import com.example.ramadancalendar.model.Location
 import com.example.ramadancalendar.view_model.HomeViewModel
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,12 +42,7 @@ class MainActivity : AppCompatActivity() {
         homeViewModel.currentLocation.observe(this) { locationData ->
 
             if (locationData != null) {
-                binding.tvLocation.text =
-                    String.format(
-                        "Lat: %.2f, Long: %.2f",
-                        locationData.latitude,
-                        locationData.longitude
-                    )
+                binding.tvLocation.text = getAddressFromLocation(locationData.latitude, locationData.longitude)
 
                 binding.clRoot.background = AppCompatResources.getDrawable(this, R.color.teal_200)
 
@@ -53,6 +51,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun getAddressFromLocation(latitude: Double, longitude: Double): String? {
+        val geocoder = Geocoder(this, Locale.getDefault())
+        val addresses: List<Address>? = try {
+            geocoder.getFromLocation(latitude, longitude, 1)
+        } catch (e: Exception) {
+            null
+        }
+        return addresses?.firstOrNull()?.getAddressLine(0)
+    }
+
 
     private fun fetchLocation() {
         binding.progressCircular.isVisible = true
