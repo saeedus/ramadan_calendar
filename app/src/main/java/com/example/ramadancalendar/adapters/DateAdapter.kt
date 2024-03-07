@@ -11,7 +11,11 @@ import com.example.ramadancalendar.R
 import com.example.ramadancalendar.databinding.LayoutCalendarCellBinding
 import com.example.ramadancalendar.model.DateModel
 
-class DateAdapter(private val context: Context, private val dates: ArrayList<DateModel>) :
+class DateAdapter(
+    private val context: Context,
+    private val dates: ArrayList<DateModel>,
+    private val selectDateListener: SelectDateListener
+) :
     BaseAdapter() {
     private var selectedPosition = -1
     override fun getCount(): Int {
@@ -38,6 +42,8 @@ class DateAdapter(private val context: Context, private val dates: ArrayList<Dat
 
         binding.tvDate.text = dates[position].date
         binding.root.setOnClickListener {
+            selectDateListener.onDateSelected(position, date = dates[position].date)
+
             val oldSelectedPosition = selectedPosition
             selectedPosition = position
 
@@ -56,5 +62,8 @@ class DateAdapter(private val context: Context, private val dates: ArrayList<Dat
     }
 
 
+    interface SelectDateListener {
+        fun onDateSelected(position: Int, date: String)
+    }
 
 }

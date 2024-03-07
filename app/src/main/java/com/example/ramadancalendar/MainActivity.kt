@@ -34,10 +34,37 @@ class MainActivity : AppCompatActivity() {
         data.add(DateModel("৯", "২০", "বুধবার", "৬:১৩", "৪:৪৩"))
         data.add(DateModel("১০", "২১", "বৃহস্পতিবার", "৬:১৩", "৪:৪২"))
         data.add(DateModel("১১", "২২", "শুক্রবার", "৬:১৪", "৪:৪১"))
+        data.add(DateModel("১২", "২৩", "শনিবার", "৬:১৪", "৪:৪০"))
+        data.add(DateModel("১৩", "২৪", "রবিবার", "৬:১৪", "৪:৩৯"))
+        data.add(DateModel("১৪", "২৫", "সোমবার", "৬:১৫", "৪:৩৮"))
+        data.add(DateModel("১৫", "২৬", "মঙ্গলবার", "৬:১৫", "৪:৩৬"))
+        data.add(DateModel("১৬", "২৭", "বুধবার", "৬:১৬", "৪:৩৫"))
+        data.add(DateModel("১৭", "২৮", "বৃহস্পতিবার", "৬:১৬", "৪:৩৪"))
+        data.add(DateModel("১৮", "২৯", "শুক্রবার", "৬:১৭", "৪:৩৩"))
+        data.add(DateModel("১৯", "৩০", "শনিবার", "৬:১৭", "৪:৩১"))
+        data.add(DateModel("২০", "৩১", "রবিবার", "৬:১৮", "৪:৩০"))
+        data.add(DateModel("২১", "১", "সোমবার", "৬:১৮", "৪:২৯"))
+        data.add(DateModel("২২", "২", "মঙ্গলবার", "৬:১৯", "৪:২৮"))
+        data.add(DateModel("২৩", "৩", "বুধবার", "৬:১৯", "৪:২৭"))
+        data.add(DateModel("২৪", "৪", "বৃহস্পতিবার", "৬:১৯", "৪:২৬"))
+        data.add(DateModel("২৫", "৫", "শুক্রবার", "৬:২০", "৪:২৪"))
+        data.add(DateModel("২৬", "৬", "শনিবার", "৬:২০", "৪:২৪"))
+        data.add(DateModel("২৭", "৭", "রবিবার", "৬:২১", "৪:২৩"))
+        data.add(DateModel("২৮", "৮", "সোমবার", "৬:২১", "৪:২২"))
+        data.add(DateModel("২৯", "৯", "মঙ্গলবার", "৬:২১", "৪:২১"))
+        data.add(DateModel("৩০", "১০", "বুধবার", "৬:২২", "৪:২০"))
 
 
         val gridView = binding.gvCalendar
-        val adapter = DateAdapter(this, data)
+        val adapter = DateAdapter(this, data, object : DateAdapter.SelectDateListener {
+            override fun onDateSelected(position: Int, date: String) {
+                binding.tvEngDate.text = data[position].englishDate + " " + data[position].day
+                binding.tvSehriTime.text = data[position].sehriTime
+                binding.tvIftarTime.text = data[position].iftarTime
+            }
+
+
+        })
         gridView.adapter = adapter
     }
 }
