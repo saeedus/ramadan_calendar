@@ -23,10 +23,18 @@ class MainActivity : AppCompatActivity() {
 
         // Prepare your data list here (replace with actual data)
         val data = ArrayList<DateModel>()
-        for (i in 1..30) {
-            val model = DateModel(i.toString())
-            data.add(model)
-        }
+        data.add(DateModel("১", "১২", "মঙ্গলবার", "৬:১০", "৪:৫১"))
+        data.add(DateModel("২", "১৩", "বুধবার", "৬:১০", "৪:৫০"))
+        data.add(DateModel("৩", "১৪", "বৃহস্পতিবার", "৬:১১", "৪:৪৯"))
+        data.add(DateModel("৪", "১৫", "শুক্রবার", "৬:১১", "৪:৪৮"))
+        data.add(DateModel("৫", "১৬", "শনিবার", "৬:১২", "৪:৪৭"))
+        data.add(DateModel("৬", "১৭", "রবিবার", "৬:১২", "৪:৪৬"))
+        data.add(DateModel("৭", "১৮", "সোমবার", "৬:১২", "৪:৪৫"))
+        data.add(DateModel("৮", "১৯", "মঙ্গলবার", "৬:১৩", "৪:৪৪"))
+        data.add(DateModel("৯", "২০", "বুধবার", "৬:১৩", "৪:৪৩"))
+        data.add(DateModel("১০", "২১", "বৃহস্পতিবার", "৬:১৩", "৪:৪২"))
+        data.add(DateModel("১১", "২২", "শুক্রবার", "৬:১৪", "৪:৪১"))
+
 
         val gridView = binding.gvCalendar
         val adapter = DateAdapter(this, data)

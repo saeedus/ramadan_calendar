@@ -44,6 +44,67 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_month_name" />
 
+
+        <TextView
+            android:id="@+id/tv_eng_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="24dp"
+            android:text="12 March"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gv_calendar" />
+
+        <TextView
+            android:id="@+id/label_sehri_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="সেহরি এর সময়"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_eng_date" />
+
+        <TextView
+            android:id="@+id/tv_sehri_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5:42"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_sehri_time" />
+
+
+        <TextView
+            android:id="@+id/label_iftar_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="ইফতার এর সময়"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_sehri_time" />
+
+        <TextView
+            android:id="@+id/tv_iftar_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5:42"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_iftar_time" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
