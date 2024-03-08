@@ -17,7 +17,6 @@ class DateAdapter(
     private val selectDateListener: SelectDateListener
 ) :
     BaseAdapter() {
-    private var selectedPosition = -1
     override fun getCount(): Int {
         return dates.size
     }
@@ -40,23 +39,16 @@ class DateAdapter(
             convertView.tag as LayoutCalendarCellBinding
         }
 
-        binding.tvDate.text = dates[position].date
-        binding.root.setOnClickListener {
-            selectDateListener.onDateSelected(position, date = dates[position].date)
+        binding.tvRamadanNum.text = dates[position].date
+        binding.tvDate.text = context.resources.getString(
+            R.string.todays_date,
+            dates[position].englishDate,
+            dates[position].month,
+            dates[position].day
+        )
+        binding.tvSuhoorTime.text = dates[position].sehriTime
+        binding.tvIftarTime.text = dates[position].iftarTime
 
-            val oldSelectedPosition = selectedPosition
-            selectedPosition = position
-
-            if (oldSelectedPosition != selectedPosition) {
-                if (oldSelectedPosition >= 0) {
-                    (parent.getChildAt(oldSelectedPosition).tag as ViewDataBinding).root
-                        .setBackgroundColor(
-                            context.resources.getColor(R.color.pink)
-                        )
-                }
-                binding.root.setBackgroundColor(context.resources.getColor(R.color.white))
-            }
-        }
         binding.root.tag = binding
         return binding.root
     }

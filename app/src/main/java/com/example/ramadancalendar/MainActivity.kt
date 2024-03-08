@@ -11,12 +11,14 @@ import com.example.ramadancalendar.R
 import com.example.ramadancalendar.adapters.DateAdapter
 import com.example.ramadancalendar.databinding.ActivityMainBinding
 import com.example.ramadancalendar.model.DateModel
+import com.example.ramadancalendar.model.PrayerTime
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val data = ArrayList<DateModel>()
+//    private val prayerData = ArrayList<PrayerTime>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,20 +56,16 @@ class MainActivity : AppCompatActivity() {
         data.add(DateModel("৩০", "১০", "বুধবার", "এপ্রিল", "৬:২২", "৪:২০"))
 
 
-        val gridView = binding.gvCalendar
+        val listView = binding.lvCalendar
         val adapter = DateAdapter(this, data, object : DateAdapter.SelectDateListener {
             override fun onDateSelected(position: Int, date: String) {
-                binding.tvEngDate.text =
-                    "${data[position].englishDate} ${data[position].month}, ${data[position].day}"
-                binding.tvSehriTime.text = data[position].sehriTime
-                binding.tvIftarTime.text = data[position].iftarTime
+//                binding.tvEngDate.text =
+//                    "${data[position].englishDate} ${data[position].month}, ${data[position].day}"
+//                binding.tvSehriTime.text = data[position].sehriTime
+//                binding.tvIftarTime.text = data[position].iftarTime
             }
-
-
         })
-        gridView.adapter = adapter
+        listView.adapter = adapter
     }
-
-
 }
 

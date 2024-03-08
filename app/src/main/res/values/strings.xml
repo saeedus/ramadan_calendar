@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ramadan Calendar</string>
+    <string name="todays_date">%s %s,\n%s</string>
 </resources>
