@@ -4,6 +4,7 @@ data class DateModel(
     val date: String,
     val englishDate: String,
     val day: String,
+    val month: String,
     val iftarTime: String,
     val sehriTime: String
 )

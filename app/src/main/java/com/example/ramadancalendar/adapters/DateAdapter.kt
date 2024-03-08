@@ -51,7 +51,7 @@ class DateAdapter(
                 if (oldSelectedPosition >= 0) {
                     (parent.getChildAt(oldSelectedPosition).tag as ViewDataBinding).root
                         .setBackgroundColor(
-                            context.resources.getColor(R.color.teal_200)
+                            context.resources.getColor(R.color.pink)
                         )
                 }
                 binding.root.setBackgroundColor(context.resources.getColor(R.color.white))
