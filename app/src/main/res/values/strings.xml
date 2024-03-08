@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Ramadan Calendar</string>
     <string name="todays_date">%s %s,\n%s</string>
+    <string name="ramandan_timing">রমজানের সময়সূচী</string>
 </resources>
