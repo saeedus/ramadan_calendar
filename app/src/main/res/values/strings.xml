@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Ramadan Calendar</string>
     <string name="todays_date">%s %s,\n%s</string>
-    <string name="ramandan_timing">রমজানের সময়সূচী</string>
+    <string name="ramandan_timing">রমজানের সময়সূচী - ২০২৪</string>
+    <string name="dhaka_bangladesh">ঢাকা, বাংলাদেশ</string>
 </resources>
