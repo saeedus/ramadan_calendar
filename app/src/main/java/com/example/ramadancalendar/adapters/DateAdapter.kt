@@ -10,6 +10,8 @@ import com.example.ramadancalendar.R
 import com.example.ramadancalendar.databinding.LayoutCalendarCellBinding
 import com.example.ramadancalendar.model.DateModel
 import com.example.ramadancalendar.utility.Utils
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class DateAdapter(
     private val context: Context, private val dates: List<DateModel>
@@ -43,11 +45,28 @@ class DateAdapter(
             Utils().toBanglaMonth(dates[position].date.month.toString()),
             Utils().toBanglaDayOfWeek(dates[position].date.dayOfWeek.toString())
         )
-        binding.tvSuhoorTime.text = Utils().toBanglaTime(dates[position].sehriTime.toString())
-        binding.tvIftarTime.text = Utils().toBanglaTime(dates[position].iftarTime.toString())
+        binding.tvSuhoorTime.text = Utils().toBanglaTime(
+            dates[position].sehriTime.format(
+                DateTimeFormatter.ofPattern("h:mm")
+            )
+        )
+        binding.tvIftarTime.text =
+            Utils().toBanglaTime(dates[position].iftarTime.format(DateTimeFormatter.ofPattern("h:mm")))
+
+        highlightToday(binding, position)
+
 
         binding.root.tag = binding
         return binding.root
+    }
+
+    private fun highlightToday(binding: LayoutCalendarCellBinding, position: Int) {
+        binding.llRoot.setBackgroundResource(
+            if (dates[position].date == LocalDate.now())
+                R.drawable.bg_selected_rectangle
+            else
+                R.drawable.bg_rounded_rectangle
+        )
     }
 }
 
