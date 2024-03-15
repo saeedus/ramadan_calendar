@@ -37,15 +37,15 @@ class DateAdapter(
             convertView.tag as LayoutCalendarCellBinding
         }
 
-        binding.tvRamadanNum.text = dates[position].date
+        binding.tvRamadanNum.text = dates[position].num
         binding.tvDate.text = context.resources.getString(
             R.string.todays_date,
-            dates[position].englishDate,
-            dates[position].month,
-            dates[position].day
+            dates[position].date.dayOfMonth.toString(),
+            dates[position].date.month,
+            dates[position].date.dayOfWeek
         )
-        binding.tvSuhoorTime.text = dates[position].sehriTime
-        binding.tvIftarTime.text = dates[position].iftarTime
+        binding.tvSuhoorTime.text = dates[position].sehriTime.toString()
+        binding.tvIftarTime.text = dates[position].iftarTime.toString()
 
         binding.root.tag = binding
         return binding.root

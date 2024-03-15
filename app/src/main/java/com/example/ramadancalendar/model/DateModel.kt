@@ -1,12 +1,13 @@
 package com.example.ramadancalendar.model
 
+import java.time.LocalDate
+import java.time.LocalTime
+
 data class DateModel(
-    val date: String,
-    val englishDate: String,
-    val day: String,
-    val month: String,
-    val iftarTime: String,
-    val sehriTime: String
+    val num: String,
+    val date: LocalDate,
+    val iftarTime: LocalTime,
+    val sehriTime: LocalTime
 )
 
 
