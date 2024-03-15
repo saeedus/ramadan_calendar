@@ -12,10 +12,8 @@ import com.example.ramadancalendar.model.DateModel
 import com.example.ramadancalendar.utility.Utils
 
 class DateAdapter(
-    private val context: Context,
-    private val dates: List<DateModel>
-) :
-    BaseAdapter() {
+    private val context: Context, private val dates: List<DateModel>
+) : BaseAdapter() {
     override fun getCount(): Int {
         return dates.size
     }
@@ -38,9 +36,7 @@ class DateAdapter(
             convertView.tag as LayoutCalendarCellBinding
         }
 
-
-
-        binding.tvRamadanNum.text = dates[position].num
+        binding.tvRamadanNum.text = Utils().toBanglaDigit(position + 1)
         binding.tvDate.text = context.resources.getString(
             R.string.todays_date,
             Utils().toBanglaDigit(dates[position].date.dayOfMonth),
@@ -53,10 +49,9 @@ class DateAdapter(
         binding.root.tag = binding
         return binding.root
     }
+}
 
 
-    interface SelectDateListener {
-        fun onDateSelected(position: Int, date: String)
-    }
-
+interface SelectDateListener {
+    fun onDateSelected(position: Int, date: String)
 }

@@ -4,7 +4,6 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 data class DateModel(
-    val num: String,
     val date: LocalDate,
     val iftarTime: LocalTime,
     val sehriTime: LocalTime
