@@ -11,7 +11,7 @@ import java.time.Month
 class CalendarViewModel : ViewModel() {
 
 
-    fun getRamadanDate(): LiveData<List<DateModel>> {
+    fun getRamadanDates(): LiveData<List<DateModel>> {
         val data = MutableLiveData<List<DateModel>>()
 
         val initialData = listOf(
@@ -175,5 +175,10 @@ class CalendarViewModel : ViewModel() {
         return data
     }
 
+
+    fun getTodaysIftarTime(): LocalTime? {
+        val today = LocalDate.now()
+        return getRamadanDates().value?.find { it.date == today }?.iftarTime
+    }
 
 }
