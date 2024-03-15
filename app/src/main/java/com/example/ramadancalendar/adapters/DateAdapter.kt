@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.ramadancalendar.R
 import com.example.ramadancalendar.databinding.LayoutCalendarCellBinding
 import com.example.ramadancalendar.model.DateModel
+import com.example.ramadancalendar.utility.Utils
 
 class DateAdapter(
     private val context: Context,
@@ -37,15 +38,17 @@ class DateAdapter(
             convertView.tag as LayoutCalendarCellBinding
         }
 
+
+
         binding.tvRamadanNum.text = dates[position].num
         binding.tvDate.text = context.resources.getString(
             R.string.todays_date,
-            dates[position].date.dayOfMonth.toString(),
-            dates[position].date.month,
-            dates[position].date.dayOfWeek
+            Utils().toBanglaDigit(dates[position].date.dayOfMonth),
+            Utils().toBanglaMonth(dates[position].date.month.toString()),
+            Utils().toBanglaDayOfWeek(dates[position].date.dayOfWeek.toString())
         )
-        binding.tvSuhoorTime.text = dates[position].sehriTime.toString()
-        binding.tvIftarTime.text = dates[position].iftarTime.toString()
+        binding.tvSuhoorTime.text = Utils().toBanglaTime(dates[position].sehriTime.toString())
+        binding.tvIftarTime.text = Utils().toBanglaTime(dates[position].iftarTime.toString())
 
         binding.root.tag = binding
         return binding.root
