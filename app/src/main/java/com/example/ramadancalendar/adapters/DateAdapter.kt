@@ -6,15 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import com.example.ramadancalendar.R
 import com.example.ramadancalendar.databinding.LayoutCalendarCellBinding
 import com.example.ramadancalendar.model.DateModel
 
 class DateAdapter(
     private val context: Context,
-    private val dates: ArrayList<DateModel>,
-    private val selectDateListener: SelectDateListener
+    private val dates: List<DateModel>
 ) :
     BaseAdapter() {
     override fun getCount(): Int {
