@@ -4,4 +4,5 @@
     <string name="ramandan_timing">রমজানের সময়সূচী - ২০২৪</string>
     <string name="dhaka_bangladesh">ঢাকা, বাংলাদেশ</string>
     <string name="iftar_time_remaining">ইফতারের সময় বাকি : %s</string>
+    <string name="sehri_time_remaining">সেহরির সময় বাকি : %s</string>
 </resources>

@@ -177,8 +177,11 @@ class CalendarViewModel : ViewModel() {
 
 
     fun getTodaysIftarTime(): LocalTime? {
-        val today = LocalDate.now()
-        return getRamadanDates().value?.find { it.date == today }?.iftarTime
+        return getRamadanDates().value?.find { it.date == LocalDate.now() }?.iftarTime
+    }
+
+    fun getTodaysSehriTime(): LocalTime? {
+        return getRamadanDates().value?.find { it.date == LocalDate.now() }?.sehriTime
     }
 
 }

@@ -1,5 +1,8 @@
 package com.example.ramadancalendar.utility
 
+import java.time.Duration
+import java.time.LocalTime
+
 class Utils {
 
     fun toBanglaDayOfWeek(englishText: String): String {
@@ -53,6 +56,16 @@ class Utils {
             banglaTime += banglaDigits[char] ?: char
         }
         return banglaTime
+    }
+
+    fun calculateRemainingTime(targetTime: LocalTime?): String {
+        val duration = Duration.between(LocalTime.now(), targetTime)
+
+        val hours = duration.toHours()
+        val minutes = duration.minusHours(hours).toMinutes()
+        val seconds = duration.minusHours(hours).minusMinutes(minutes).seconds
+
+        return toBanglaTime(String.format("%02d:%02d:%02d", hours, minutes, seconds))
     }
 
 
